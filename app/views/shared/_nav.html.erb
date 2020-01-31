@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">WantedlyApp</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      <% if user_signed_in? %>
+        <li class="nav-item active">
+          <%= link_to "トップ", items_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to '投稿画面へ', new_item_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to 'マイページへ', user_path(current_user.id), class: "nav-link" %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
+        </li>
+      <% else %>
+        <div class="company-login">企業側でログインはこちら↓
+          <li class="nav-item active">
+            <%= link_to "ログイン", new_user_session_path, class: 'post', class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "新規登録", new_user_registration_path, class: 'post', class: "nav-link" %>
+          </li>
+        </div>
+
+      <% end %>
+
+      <% if company_signed_in? %>
+        <li class="nav-item active">
+          <%= link_to "トップ", items_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to '投稿画面へ', new_item_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to 'マイページへ', user_path(current_user.id), class: "nav-link" %>
+        </li>
+        <li class="nav-item active">
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
+        </li>
+      <% else %>
+        <div class="user-login">ユーザーでログインはこちら↓
+          <li class="nav-item active">
+            <%= link_to "ログイン", new_user_session_path, class: 'post', class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "新規登録", new_user_registration_path, class: 'post', class: "nav-link" %>
+          </li>
+        </div>
+      <% end %>
+    </ul>
+</nav>
