@@ -23,10 +23,10 @@
       <% else %>
         <div class="company-login">企業側でログインはこちら↓
           <li class="nav-item active">
-            <%= link_to "ログイン", new_user_session_path, class: 'post', class: "nav-link" %>
+            <%= link_to "ログイン", new_company_session_path, class: 'post', class: "nav-link" %>
           </li>
           <li class="nav-item active">
-            <%= link_to "新規登録", new_user_registration_path, class: 'post', class: "nav-link" %>
+            <%= link_to "新規登録", new_company_registration_path, class: 'post', class: "nav-link" %>
           </li>
         </div>
 
@@ -34,16 +34,16 @@
 
       <% if company_signed_in? %>
         <li class="nav-item active">
-          <%= link_to "トップ", items_path, class: "nav-link" %>
+          <%= link_to "トップ", companies_path, class: "nav-link" %>
         </li>
         <li class="nav-item active">
-          <%= link_to '投稿画面へ', new_item_path, class: "nav-link" %>
+          <%= link_to '投稿画面へ', new_post_path, class: "nav-link" %>
         </li>
         <li class="nav-item active">
-          <%= link_to 'マイページへ', user_path(current_user.id), class: "nav-link" %>
+          <%= link_to 'マイページへ', company_path(current_company.id), class: "nav-link" %>
         </li>
         <li class="nav-item active">
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
+          <%= link_to "ログアウト", destroy_company_session_path, method: :delete, class: "nav-link" %>
         </li>
       <% else %>
         <div class="user-login">ユーザーでログインはこちら↓

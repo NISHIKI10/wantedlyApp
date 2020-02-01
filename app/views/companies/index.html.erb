@@ -1,0 +1,4 @@
+<% @companies.each do |company| %>
+  <hr>
+  <p><span>email: </span><%=link_to company.email, company_path(company.id) %></p>
+<% end %>
