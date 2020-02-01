@@ -9,14 +9,13 @@
 
       <% if user_signed_in? %>
         <li class="nav-item active">
-          <%= link_to "トップ", items_path, class: "nav-link" %>
+          <%= link_to "トップ", posts_path, class: "nav-link" %>
         </li>
-        <li class="nav-item active">
-          <%= link_to '投稿画面へ', new_item_path, class: "nav-link" %>
-        </li>
+<%#         
         <li class="nav-item active">
           <%= link_to 'マイページへ', user_path(current_user.id), class: "nav-link" %>
-        </li>
+
+
         <li class="nav-item active">
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
         </li>
@@ -34,7 +33,7 @@
 
       <% if company_signed_in? %>
         <li class="nav-item active">
-          <%= link_to "トップ", companies_path, class: "nav-link" %>
+          <%= link_to "トップ", posts_path, class: "nav-link" %>
         </li>
         <li class="nav-item active">
           <%= link_to '投稿画面へ', new_post_path, class: "nav-link" %>
