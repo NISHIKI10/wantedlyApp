@@ -1,0 +1,15 @@
+<% @posts.each do |post| %>
+  <hr>
+  <p><strong>投稿内容: </strong>
+    <div>
+      <%= post.title %> 
+    </div>
+    <div>
+      <%= image_tag post.image_url(:thumb) %> 
+    </div>
+    <div>
+      <%= post.content %> 
+    </div>
+
+  </p>
+<% end %>

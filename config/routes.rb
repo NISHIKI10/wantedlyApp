@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   }
   resources :companies
   resources :posts
+  root 'posts#index'
 end
