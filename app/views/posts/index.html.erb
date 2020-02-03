@@ -1,6 +1,7 @@
 <% @posts.each do |post| %>
+
   <hr>
-  <p><strong>投稿内容: </strong>
+  <p><strong>投稿した企業は<%= link_to "こちら", post_path(post.id) %>から確認</strong>
     <div>
       <%= post.title %> 
     </div>
