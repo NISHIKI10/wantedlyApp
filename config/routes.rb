@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   resources :companies
+  resources :users
   root 'posts#index'
 
   resources :posts do

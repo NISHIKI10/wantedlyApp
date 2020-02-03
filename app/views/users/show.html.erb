@@ -1,0 +1,8 @@
+<hr>
+<p><span>email: </span><%= @user.email %></p>
+<p><span>name: </span><%= @user.username %></p>
+
+<% @favorite_posts.each do |post| %>
+  <hr>
+  <p><span>ファボ内容: </span><%=link_to post.title, post_path(post.id) %></p>
+<% end %>
