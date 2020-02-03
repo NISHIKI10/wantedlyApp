@@ -24,6 +24,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @company = @post.company
+    @comment = Comment.new
   end
 
   private

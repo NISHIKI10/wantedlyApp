@@ -1,3 +1,11 @@
 <h1><span>企業名: </span><%= @company.companyname %></h1>
 <p><span>email: </span><%= @company.email %></p>
 <p><span>内容: </span><%= @post.content %></p>
+<hr>
+<p>コメント欄</p>
+<%= form_tag post_comments_path(@post.id) do %>
+  <p>
+    <%= text_field_tag :body %>
+  </p>
+    <%= submit_tag("送信") %>
+<% end %>

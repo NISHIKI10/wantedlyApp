@@ -4,5 +4,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :favorites 
+  has_many :comments
   has_many :favorite_posts, through: :favorites, source: :post
 end
