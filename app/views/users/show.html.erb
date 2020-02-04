@@ -4,5 +4,6 @@
 
 <% @favorite_posts.each do |post| %>
   <hr>
-  <p><span>ファボ内容: </span><%=link_to post.title, post_path(post.id) %></p>
+  <p><strong>お気に入りした投稿: </strong></p>
+  <%=link_to post.title, post_path(post.id) %>
 <% end %>

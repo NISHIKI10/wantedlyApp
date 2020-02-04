@@ -1,11 +1,17 @@
 <h1><span>企業名: </span><%= @company.companyname %></h1>
-<p><span>email: </span><%= @company.email %></p>
-<p><span>内容: </span><%= @post.content %></p>
+<h2><span>email: </span><%= @company.email %></h2>
+<h2><span>内容: </span><%= @post.content %></h2>
 <hr>
+
+<%= form_for [@post, @comment] do |f| %>
+  <%= f.text_field :body %>
+  <br>
+  <%= f.submit 'コメントする' %>
+<% end %>
+
+<hr>
+
 <p>コメント欄</p>
-<%= form_tag post_comments_path(@post.id) do %>
-  <p>
-    <%= text_field_tag :body %>
-  </p>
-    <%= submit_tag("送信") %>
+<% @post.comments.each do |comment| %>
+  <p><%= comment.body %></p>
 <% end %>
