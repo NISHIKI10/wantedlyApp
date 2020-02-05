@@ -23,10 +23,10 @@
       <% else %>
         <div class="company-login">企業側でログインはこちら↓
           <li class="nav-item active">
-            <%= link_to "ログイン", new_company_session_path, class: 'post', class: "nav-link" %>
+            <%= link_to "ログイン", new_company_session_path%>
           </li>
           <li class="nav-item active">
-            <%= link_to "新規登録", new_company_registration_path, class: 'post', class: "nav-link" %>
+            <%= link_to "新規登録", new_company_registration_path%>
           </li>
         </div>
 
@@ -48,10 +48,10 @@
       <% else %>
         <div class="user-login">ユーザーでログインはこちら↓
           <li class="nav-item active">
-            <%= link_to "ログイン", new_user_session_path, class: 'post', class: "nav-link" %>
+            <%= link_to "ログイン", new_user_session_path%>
           </li>
           <li class="nav-item active">
-            <%= link_to "新規登録", new_user_registration_path, class: 'post', class: "nav-link" %>
+            <%= link_to "新規登録", new_user_registration_path%>
           </li>
         </div>
       <% end %>
