@@ -2,14 +2,18 @@ class CommentsController < ApplicationController
   def create
     if user_signed_in?
       post = Post.find(params[:post_id])
-      @comment = post.comments.new(comment_params)
-      @comment.user_id = current_user.id
-      @comment.save
+      @usercomment = post.comments.new(comment_params)
+      @usercomment.user_id = current_user.id
+      @usercomment.save
       redirect_to post_path(params[:post_id])
     else
-      Comment.create(company_id: current_company.id, post_id: params[:post_id], body: params[:body])
+      post = Post.find(params[:post_id])
+      @companycomment = post.comments.new(comment_params)
+      @companycomment.company_id = current_company.id
+      @companycomment.save
       redirect_to post_path(params[:post_id])
     end
+
   end
 
   def destroy

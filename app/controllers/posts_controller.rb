@@ -23,9 +23,12 @@ class PostsController < ApplicationController
   
   def show
     @post = Post.find(params[:id])
-    @comments = @post.comments
-    @comment = Comment.new
     @company = @post.company
+    @comment = Comment.new
+    @usercomment = @post.comments
+    @companycomment = @post.comments
+    @comments = @usercomment.push(@companycomment)
+    @comments = @comments.flatten!
   end
 
   private

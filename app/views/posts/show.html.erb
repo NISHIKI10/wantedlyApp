@@ -3,15 +3,31 @@
 <h2><span>内容: </span><%= @post.content %></h2>
 <hr>
 
-<%= form_with(model: [@post,@comment], local: true) do |f| %>
-  <%= f.text_field :body %>
-  <br>
-  <%= f.submit 'コメントする' %>
-<% end %>
+<% if user_signed_in? %>
+  <%= form_with(model: [@post,@comment], local: true) do |f| %>
+    <%= f.text_field :body %>
+    <br>
+    <%= f.submit '（ユーザーから）コメントする' %>
+  <% end %>
+<% else %>
+  <%= form_with(model: [@post,@comment], local: true) do |f| %>
+    <%= f.text_field :body %>
+    <br>
+    <%= f.submit '（企業から）コメントする' %>
+  <% end %>
+<% end %> 
+<%# コメントに名前をつけるために判別するために別々で登録 %>
 
 <hr>
 
 <p>コメント欄</p>
-<% @comments.each do |comment| %>
-  <p><%= comment.body %></p>
+
+<% @usercomment.each do |comment| %>
+  <p>ユーザー : <%= comment.body %></p>
 <% end %>
+<% @companycomment.each do |comment| %>
+  <p>会社 : <%= comment.body %></p>
+<% end %>
+
+<%# create_at　で順番表示を変える %>
+
