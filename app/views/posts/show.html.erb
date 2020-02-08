@@ -22,12 +22,13 @@
 
 <p>コメント欄</p>
 
-<% @usercomment.each do |comment| %>
-  <p>ユーザー : <%= comment.body %></p>
-<% end %>
-<% @companycomment.each do |comment| %>
+<% @companycomments.each do |comment| %>
   <p>会社 : <%= comment.body %></p>
 <% end %>
+<% @usercomments.each do |comment| %>
+  <p>ユーザー : <%= comment.body %></p>
+<% end %>
+
 
 <%# create_at　で順番表示を変える %>
 

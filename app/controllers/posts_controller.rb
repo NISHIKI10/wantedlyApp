@@ -25,10 +25,9 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @company = @post.company
     @comment = Comment.new
-    @usercomment = @post.comments
-    @companycomment = @post.comments
-    @comments = @usercomment.push(@companycomment)
-    @comments = @comments.flatten!
+
+    @companycomments = @post.comments.company_id
+    @usercomments = @post.comments.user_id
   end
 
   private
