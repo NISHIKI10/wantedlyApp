@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   end
   
   resources :posts do
-    resource :comments, only: [:create, :destroy]
+    resource :user_comments, only: [:create]
+  end
+
+  resources :posts do
+    resource :company_comments, only: [:create]
   end
 end

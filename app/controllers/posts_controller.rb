@@ -24,10 +24,17 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @company = @post.company
-    @comment = Comment.new
+    @comments = []
 
-    @companycomments = @post.comments.company_id
-    @usercomments = @post.comments.user_id
+
+    @user_comment = UserComment.new
+    @user_comments = @post.user_comments
+    @company_comment = CompanyComment.new
+    @company_comments = @post.company_comments
+
+    @comments = @user_comments + @company_comments
+
+    @comments = @comments.select {|comment| }
   end
 
   private

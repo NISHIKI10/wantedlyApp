@@ -1,16 +1,16 @@
 <h1><span>企業名: </span><%= @company.companyname %></h1>
-<h2><span>email: </span><%= @company.email %></h2>
+<h2><span>email: </span><%= @company.email%></h2>
 <h2><span>内容: </span><%= @post.content %></h2>
 <hr>
 
 <% if user_signed_in? %>
-  <%= form_with(model: [@post,@comment], local: true) do |f| %>
+  <%= form_with(model: [@post,@user_comment], local: true) do |f| %>
     <%= f.text_field :body %>
     <br>
     <%= f.submit '（ユーザーから）コメントする' %>
   <% end %>
 <% else %>
-  <%= form_with(model: [@post,@comment], local: true) do |f| %>
+  <%= form_with(model: [@post, @company_comment], local: true) do |f| %>
     <%= f.text_field :body %>
     <br>
     <%= f.submit '（企業から）コメントする' %>
@@ -22,13 +22,9 @@
 
 <p>コメント欄</p>
 
-<% @companycomments.each do |comment| %>
-  <p>会社 : <%= comment.body %></p>
+<% @comments.each do |comment| %>
+    <p>会社 : <%= comment.body %></p>
+    <p>ユーザー : <%= comment.body %></p>
 <% end %>
-<% @usercomments.each do |comment| %>
-  <p>ユーザー : <%= comment.body %></p>
-<% end %>
-
-
 <%# create_at　で順番表示を変える %>
 

@@ -10,16 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_03_094051) do
-
-  create_table "comments", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "company_id"
-    t.integer "post_id"
-    t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 2020_02_08_041143) do
 
   create_table "companies", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,6 +23,14 @@ ActiveRecord::Schema.define(version: 2020_02_03_094051) do
     t.string "companyname"
     t.index ["email"], name: "index_companies_on_email", unique: true
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
+  end
+
+  create_table "company_comments", force: :cascade do |t|
+    t.integer "company_id"
+    t.integer "post_id"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -47,6 +46,14 @@ ActiveRecord::Schema.define(version: 2020_02_03_094051) do
     t.string "title"
     t.text "content"
     t.integer "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "user_comments", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "post_id"
+    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
