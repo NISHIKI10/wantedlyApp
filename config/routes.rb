@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     passwords:     'users/passwords',
     registrations: 'users/registrations'
   }
+  resources :posts
   resources :companies
   resources :users
   root 'posts#index'

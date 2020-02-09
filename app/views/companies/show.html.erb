@@ -4,8 +4,16 @@
 <p><span>メールアドレス: </span><%= @company.email %></p>
 
 <% @posts.each do |post| %>
+
   <hr>
   <p><strong>タイトル: </strong><%= post.title %></p>
   <%= image_tag post.image_url(:thumb) %> 
   <p><strong>投稿内容: </strong><%= post.content %></p>
+
+  <%= link_to post_path(post.id), method: :delete do %>
+     <button type="button" class="btn btn-outline-primary">
+       <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> 削除
+     </button>
+  <% end %>
+
 <% end %>

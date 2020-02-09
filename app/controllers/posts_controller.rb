@@ -33,8 +33,13 @@ class PostsController < ApplicationController
     @company_comments = @post.company_comments
 
     @comments = @user_comments + @company_comments
+    # @comments = @comments.select {|comment| }
+  end
 
-    @comments = @comments.select {|comment| }
+  def destroy
+    @post = Post.find_by(id: params[:id])
+    @post.destroy
+    redirect_to root_path
   end
 
   private

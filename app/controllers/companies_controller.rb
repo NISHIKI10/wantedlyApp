@@ -9,4 +9,5 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
     @posts = @company.posts
   end
+
 end
