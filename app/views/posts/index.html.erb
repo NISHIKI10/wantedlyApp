@@ -1,25 +1,34 @@
 <% @posts.each do |post| %>
 
-  <hr>
-  <p><strong>投稿した企業は<%= link_to "こちら", post_path(post.id) %>から確認</strong>
-    <div>
-      <%= post.title %> 
-    </div>
-    <div>
-      <%= image_tag post.image_url(:thumb) %> 
-    </div>
-    <div>
-      <%= post.content %> 
-    </div>
+  <% if user_signed_in? || company_signed_in? %>
 
-  <% if user_signed_in? %>
-    <% if post.favorited_by?(current_user) %>
+    <hr>
+    <p><strong>投稿した企業は<%= link_to "こちら", post_path(post.id) %>から確認</strong>
+      <div>
+        <%= post.title %> 
+      </div>
+      <div>
+        <%= image_tag post.image_url(:thumb) %> 
+      </div>
+      <div>
+        <%= post.content %> 
+      </div>
+
+    <% if user_signed_in? %>
+      <% if post.favorited_by?(current_user) %>
         <p><span>お気に入り解除: </span><%=link_to post.favorites.count, post_favorites_path(post.id), method: :delete %></p>
-    <% else %>
+      <% else %>
         <p><span>お気に入り登録: </span><%=link_to post.favorites.count, post_favorites_path(post.id), method: :post %></p>
+      <% end %>
+    <% else %>
+      <p><span>お気に入り数: </span><%= post.favorites.count %></p>
     <% end %>
+
   <% else %>
-    <p><span>お気に入り数: </span><%= post.favorites.count %></p>
-  <% end %>
+
+    <h2>ログインしてください</h2>
+
+  <% end %>  
+
 
 <% end %>
