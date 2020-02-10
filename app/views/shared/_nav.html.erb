@@ -11,12 +11,9 @@
         <li class="nav-item active">
           <%= link_to "トップ", posts_path, class: "nav-link" %>
         </li>
-        
         <li class="nav-item active">
           <%= link_to 'マイページへ', user_path(current_user.id), method: :get, class: "nav-link"%>
-        </li>  
-
-
+        </li> 
         <li class="nav-item active">
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
         </li>
@@ -28,7 +25,7 @@
           <li class="nav-item active">
             <%= link_to "新規登録", new_company_registration_path%>
           </li>
-        </div>
+        </div>  
 
       <% end %>
 

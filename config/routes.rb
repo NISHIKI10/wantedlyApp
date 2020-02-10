@@ -25,4 +25,8 @@ Rails.application.routes.draw do
   resources :posts do
     resource :company_comments, only: [:create]
   end
+
+  namespace :admin do
+    resources :users, only: [:index, :destroy]
+  end
 end

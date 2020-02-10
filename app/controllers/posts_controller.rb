@@ -33,7 +33,6 @@ class PostsController < ApplicationController
     @company_comments = @post.company_comments
 
     @comments = @user_comments + @company_comments
-    # @comments = @comments.select {|comment| }
   end
 
   def destroy
