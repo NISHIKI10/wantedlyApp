@@ -1,0 +1,20 @@
+<h1>登録済みの企業一覧</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>名前</th>
+      <th>登録日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @companies.each do |company| %>
+      <tr>
+        <td><%= company.id %></td>
+    	<td><%= company.companyname %></td>
+    	<td><%= company.created_at %></td>
+      <td><%= link_to "削除", admin_company_path(company.id), method: :delete, data: {confirm: "本当にいいですか?"}%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

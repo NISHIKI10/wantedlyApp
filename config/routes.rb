@@ -29,4 +29,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:index, :destroy]
   end
+
+  namespace :admin do
+    resources :companies, only: [:index, :destroy]
+  end
 end

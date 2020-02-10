@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_10_083855) do
+ActiveRecord::Schema.define(version: 2020_02_10_094347) do
 
   create_table "companies", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2020_02_10_083855) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "companyname"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_companies_on_email", unique: true
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
   end

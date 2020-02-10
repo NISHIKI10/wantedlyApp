@@ -3,6 +3,6 @@ class Company < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :posts
-  has_many :company_comments
+  has_many :posts, dependent: :destroy
+  has_many :company_comments, dependent: :destroy
 end

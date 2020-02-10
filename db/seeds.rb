@@ -11,3 +11,9 @@ User.create!(username:  "管理者",
   password:  "password",
   password_confirmation: "password",
   admin: true)
+
+Company.create!(companyname:  "管理者",
+  email: "admin@example.com",
+  password:  "password",
+  password_confirmation: "password",
+  admin: true)
