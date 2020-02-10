@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   # before_action :authenticate_company!, except: [:index]
-
   def index
     @posts = Post.all
   end

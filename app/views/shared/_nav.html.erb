@@ -8,16 +8,50 @@
     <ul class="navbar-nav mr-auto">
 
       <% if user_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "トップ", posts_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item active">
-          <%= link_to 'マイページへ', user_path(current_user.id), method: :get, class: "nav-link"%>
-        </li> 
-        <li class="nav-item active">
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
-        </li>
+        <% if current_user.admin?%>
+          <li class="nav-item active">
+            <%= link_to "管理者画面へ", admin_users_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
+          </li>
+        <% else %>
+          <li class="nav-item active">
+            <%= link_to "トップ", posts_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "マイページへ", user_path(current_user.id), method: :get, class: "nav-link"%>
+          </li> 
+          <li class="nav-item active">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link" %>
+          </li>
+        <% end %>  
+
+      <%elsif company_signed_in? %>
+        <% if current_company.admin?%>
+          <li class="nav-item active">
+            <%= link_to "管理者画面へ", admin_companies_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "ログアウト", destroy_company_session_path, method: :delete, class: "nav-link" %>
+          </li>
+        <% else %>
+          <li class="nav-item active">
+            <%= link_to "トップ", posts_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "投稿画面へ", new_post_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "マイページへ", company_path(current_company.id), class: "nav-link" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "ログアウト", destroy_company_session_path, method: :delete, class: "nav-link" %>
+          </li>
+        <% end %>
+
       <% else %>
+
         <div class="company-login">企業側でログインはこちら↓
           <li class="nav-item active">
             <%= link_to "ログイン", new_company_session_path%>
@@ -25,24 +59,8 @@
           <li class="nav-item active">
             <%= link_to "新規登録", new_company_registration_path%>
           </li>
-        </div>  
+        </div>
 
-      <% end %>
-
-      <% if company_signed_in? %>
-        <li class="nav-item active">
-          <%= link_to "トップ", posts_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item active">
-          <%= link_to '投稿画面へ', new_post_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item active">
-          <%= link_to 'マイページへ', company_path(current_company.id), class: "nav-link" %>
-        </li>
-        <li class="nav-item active">
-          <%= link_to "ログアウト", destroy_company_session_path, method: :delete, class: "nav-link" %>
-        </li>
-      <% else %>
         <div class="user-login">ユーザーでログインはこちら↓
           <li class="nav-item active">
             <%= link_to "ログイン", new_user_session_path%>
@@ -51,6 +69,8 @@
             <%= link_to "新規登録", new_user_registration_path%>
           </li>
         </div>
+
       <% end %>
+
     </ul>
 </nav>

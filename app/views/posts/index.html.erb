@@ -1,20 +1,20 @@
 <% @posts.each do |post| %>
 
   <% if user_signed_in? || company_signed_in? %>
-
     <hr>
-    <p><strong>投稿した企業は<%= link_to "こちら", post_path(post.id) %>から確認</strong>
-      <div>
-        <%= post.title %> 
-      </div>
-      <div>
-        <%= image_tag post.image_url(:thumb) %> 
-      </div>
-      <div>
-        <%= post.content %> 
-      </div>
+    <p><strong>投稿した企業は<%= link_to "こちら", post_path(post.id) %>から確認</strong><p>
+    <div>
+      <%= post.title %> 
+    </div>
+    <div>
+      <%= image_tag post.image_url(:thumb) %> 
+    </div>
+    <div>
+      <%= post.content %> 
+    </div>
 
-    <% if user_signed_in? %>
+
+    <% if user_signed_in? && !current_user.admin %>
       <% if post.favorited_by?(current_user) %>
         <p><span>お気に入り解除: </span><%=link_to post.favorites.count, post_favorites_path(post.id), method: :delete %></p>
       <% else %>
