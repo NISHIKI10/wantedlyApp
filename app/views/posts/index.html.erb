@@ -1,6 +1,9 @@
 <% if (user_signed_in? && current_user.admin?) || (company_signed_in? && current_company.admin?)%>
   <h1>あなたは管理者です</h1>
 <% elsif user_signed_in? || company_signed_in? %>
+  <div class="page-header">
+    <h1>投稿一覧</h1>
+  </div>
   <% @posts.each do |post| %>
     <hr>
     <p><strong>投稿した企業は<%= link_to "こちら", post_path(post.id) %>から確認</strong><p>
@@ -23,6 +26,7 @@
       <p><span>お気に入り数: </span><%= post.favorites.count %></p>
     <% end %>
   <% end %>
+  <%= paginate @posts %>
 <% else %>
   <h1>ログインしてください</h1>
 <% end %> 

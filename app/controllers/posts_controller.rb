@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
+  PER = 4
   # before_action :authenticate_company!, except: [:index]
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(PER)
   end
 
   def new
