@@ -23,15 +23,16 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @company = @post.company
-    @comments = []
 
 
     @user_comment = UserComment.new
-    @user_comments = @post.user_comments
+    @user_comments = @post.user_comments.to_a
     @company_comment = CompanyComment.new
-    @company_comments = @post.company_comments
+    @company_comments = @post.company_comments.to_a
 
+    @comments = []
     @comments = @user_comments + @company_comments
+    @comments = @comments.sort_by {|x| x[1]}.reverse
   end
 
   def destroy

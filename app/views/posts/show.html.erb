@@ -23,10 +23,10 @@
 <p>コメント欄</p>
 
 <% @comments.each do |comment| %>
-  <% if comment.present? %>
-    <p>kaisya : <%= comment.body %></p>
+  <% if comment.attribute_present?(:company_id) %>
+    <p><%= comment.company.companyname %> : <%= comment.body %>(<%= comment.company.created_at%>)</p>
   <% else %>
-    <p>user : <%= comment.body %></p>
+    <p><%= comment.user.username %>: <%= comment.body %>(<%= comment.user.created_at%>)</p>
   <% end %>  
 <% end %>
 <%# create_at　で順番表示を変える %>
