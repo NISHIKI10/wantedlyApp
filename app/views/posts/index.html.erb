@@ -1,6 +1,7 @@
-<% @posts.each do |post| %>
-
-  <% if user_signed_in? || company_signed_in? %>
+<% if (user_signed_in? && current_user.admin?) || (company_signed_in? && current_company.admin?)%>
+  <h1>あなたは管理者です</h1>
+<% elsif user_signed_in? || company_signed_in? %>
+  <% @posts.each do |post| %>
     <hr>
     <p><strong>投稿した企業は<%= link_to "こちら", post_path(post.id) %>から確認</strong><p>
     <div>
@@ -12,9 +13,7 @@
     <div>
       <%= post.content %> 
     </div>
-
-
-    <% if user_signed_in? && !current_user.admin %>
+    <% if user_signed_in? %>
       <% if post.favorited_by?(current_user) %>
         <p><span>お気に入り解除: </span><%=link_to post.favorites.count, post_favorites_path(post.id), method: :delete %></p>
       <% else %>
@@ -23,12 +22,11 @@
     <% else %>
       <p><span>お気に入り数: </span><%= post.favorites.count %></p>
     <% end %>
+  <% end %>
+<% else %>
+  <h1>ログインしてください</h1>
+<% end %> 
+ 
+ 
 
-  <% else %>
 
-    <h2>ログインしてください</h2>
-
-  <% end %>  
-
-
-<% end %>
